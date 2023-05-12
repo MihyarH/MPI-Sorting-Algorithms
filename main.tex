@@ -11,79 +11,83 @@
 \usepackage{hyperref}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+\usepackage{multirow}
+\usepackage{booktabs}
 
-\title{Sorting Algorithms Comparison}
-\author{By Mihyar Al Hariri}
+\title{Sorting Algorithms Theoretical and Experimental Comparison}
+\author{Mihyar Al Hariri\\
+Department of Computer Science,\\
+Faculty of Computer Science and Mathematics, \\
+West University of Timisoara, \\
+Email: \href{mailto:mihyar.la10@e-uvt.ro}{\texttt{mihyar.la10@e-uvt.ro}}
+}
 \date{May 2023}
+
 \begin{document}
 \maketitle
+
+\begin{abstract}
+One of the biggest and most important problems and one of the essential tools in the Computer Science field is sorting algorithms.
+the problem we are going to discuss is there are several factors that must be taken into consideration; time complexity 
+stability, and memory space in using the sorting algorithms.
+In this paper, we are going to compare some of the most famous sorting algorithms and the comparison will be a theoretical and experimental comparison
+\end{abstract}
 \newpage
 \tableofcontents
 \newpage
-\section{Abstract}
-Sorting is a basic task in many types of computer applications. Especially when 
-large amounts of data are to be sorted, efficiency becomes a major issue. There
-are many different sorting algorithms and even more ways to implement them. The efficiency of real implementations is often at least as important
-as the theoretical efficiency of the abstract algorithm. For example, Quick-sort is
-well-known to perform very well in most practical situations, regardless of the fact
-that many other sorting algorithms have better worst-case behavior. The goal
-of this comparison  is to compare the differences in both theory and practice. There are several features that
-interest this study such as finding possible implementations of each algorithm and
-discussing their properties, and administering considerable experiments to obtain
-empirical data about their practical efficiency in different situations. Finally, we
-present the comparison of different sorting algorithms with their practical efficiency
-and conclude the theoretical findings and the knowledge gained from this study.\cite{karunanithi2014survey}
 \section{Introduction}
+\\
+\textbf{\large Motivation of the problem}
 
-In computer science, sorting is essential to work for many applications towards
-searching and locating a prominent number of data. General description of sorting
-believed to be the process of rearranging the data into a particular order. The
-orders used are either in numerical order or lexicographical order. Sorting arranges
-the integer data into increasing or decreasing order and an array of strings into
-alphabetical order. It may also be called ordering the data. Sorting is considered
-one of the most fundamental tasks in many computer applications for the reason
-that searching a sorted array or list takes less time when compared to an unordered
-or unsorted list.
-There have been many attempts made to analyze the complexity of sorting algorithms and many interesting and good sorting algorithms have been proposed. There
-are more advantages in the study of sorting algorithms in addition to understanding
-the sorting methods. These studies have gained a significant amount of power to
-solve many other problems. Even though sorting is one of the extremely studied
-problems in computer science, it remains the most general integrative algorithm
-problem in practice.
-Moreover, each algorithm has its own advantages and disadvantages. For instance, bubble sort would be efficient to sort a small number of items, On the
-other hand, for a large number of items quick sort would perform very well. Therefore, it is not perpetually thinkable that one sorting method is better than another
-sorting method. Moreover, the performance of each sorting algorithm relies upon
-the data being sorted and the machine used for sorting.
-In general, simple sorting algorithms perform two operations such as comparing
-two elements and assigning one element. These operations proceed over and over until
-the data is sorted. Moreover, selecting a good sorting algorithm depends
-upon several factors such as the size of the input data, available main memory, disk
-size, the extent to which the list is already sorted, and the distribution of values.
-To measure the performance of different sorting algorithms we need to consider the
-following facts such as the number of operations performed, the execution time, and
-the space required for the algorithm.
-Since sorting algorithms are common in computer science, some of their contexts
-contribute to a variety of core algorithm concepts such as divide-and-conquer algorithms, data structures, randomized algorithms, etc. The majority of an algorithm
-in use have an algorithmic efficiency of either O($n^2$) or O(n log n).\cite{karunanithi2014survey}
+The difficulty of sorting algorithms is equivalent to managing a messy room full of stuff. Assume you have a slew of unsorted goods all over the place, and your duty is to arrange them in a specified order, such as smallest to largest or alphabetically. The objective is to build an effective mechanism for automatically sorting these things and placing them in their proper locations. Sorting algorithms are similar to sets of instructions that help you through the process of selecting how to compare and rearrange objects until they are in the desired order. It's similar to organizing a cluttered space, but instead of the real stuff, we're working with data and figures.
+
+Sorting algorithms are significant because they assist us in organizing data, improving search speed, optimizing operations, effectively analyzing data, and serving as building blocks for other algorithms.
+
+Existing sorting algorithms differ in terms of time complexity, space complexity, stability, adaptability, and applicability for specific data types. Choosing the best algorithm is determined by the problem's specific requirements and constraints.
+
+Existing solutions for sorting algorithms are similar to a toolbox containing various tools. Each tool has advantages and disadvantages, and the decision is dictated by the nature of the problem. Simple tools are available for small datasets, efficient tools are available for large datasets, specialized tools are available for certain data types, and adaptive techniques are available for partially sorted data.
+
+\textbf{\large Informal Description of Solution}
+
+To compare the sorting algorithms, we will follow the following steps: 
+
+1. Selection of Sorting Algorithms: We have chosen to compare six commonly used sorting algorithms - Bubble Sort, Insertion Sort, Quick Sort, Selection Sort, Merge Sort, and Heap Sort.
+
+2. Code Implementation: We obtained the code for the sorting algorithms from trusted sources. In this paper, the code used can be found on my GitHub repository at the following link: \url{https://github.com/MihyarH/MPI-Sorting-Algorithms.git}. The code was implemented in Python.
+
+3. Experimental Setup: We conducted experiments to measure the performance of each sorting algorithm. The details of the experiments are provided at the end of this paper.
+
+By following these steps, we aim to provide a comprehensive comparison of the selected sorting algorithms. The results and analysis of the experiments can be found at the end of this paper.
 
 
-\subsection{The aim of this study}
-The main objective of this study is to make a comparison  of sorting algorithms. The algorithms will be
-defined and explained and their efficiency and other properties will be discussed and
-compared in detail.
-This study also aims to collect the run-time data of different sorting algorithms
-in order to compare their implementation variants from a practical perspective.
-Quantities of interest include the number of operations of different types that are
-executed, the resulting absolute running time, and the memory space consumption.
-The goal is to gather and evaluate data that makes a detailed analysis of the practical efficiency of the algorithms and their concrete implementations possible. The experiment will be
-repeated on different Test Cases, for instance, different types of input data, such as
-arrays of numbers of different sizes.\cite{karunanithi2014survey}
+\textbf{\large Informal example}
+Let us consider the performance of Bubble Sort, Insertion Sort, Quick Sort, Selection Sort, Merge Sort, and Heap Sort.
 
-\subsection{Limitations}
-Since there are many sorting algorithms that are advanced, it is not possible to consider
-all of them in this study. Therefore only basic and the most popular algorithms are
-considered and analyzed.\cite{karunanithi2014survey}
+We look to seek solid code implementations of these sorting methods, ideally from trusted sources or repositories.
 
+We set up experiments in Python with random test cases of varying sizes. We measure execution time and memory usage for each algorithm.
+
+We collect data and analyze it to discover performance differences between sorting algorithms. We take into account issues such as time complexity, space complexity, and stability.
+
+To properly compare the performance of the algorithms, we build visualizations such as charts or graphs to explain our findings.
+
+Based on the analysis, we draw judgments about each algorithm's strengths and errors, making recommendations for certain scenarios or data types.
+We obtain vital insights into the efficiency of sorting algorithms as a result of this process, and we can make educated decisions when selecting the best algorithm for a given task.
+
+\textbf{\large Reading instructions}
+1. Introduction: Read through the introduction carefully in order to gain an understanding of its objective and compare different sorting algorithms being tested.
+
+2. Code Implementations: You can find the code at the following link: \url{https://github.com/MihyarH/MPI-Sorting-Algorithms.git}.
+
+4. Data Analysis: Review the section on data analysis to learn about how the collected information has been assessed and considered when making analysis decisions.
+
+5. Visualizations: Visit this section on visualizations to view charts or graphs depicting the relative performance of various sorting algorithms.
+
+6. Conclusions and Recommendations: Read this section in order to gain an understanding of any judgments drawn and specific suggestions made in regard to conclusions and recommendations.
+
+7. Final Remarks: As your research comes to an end, read over the final remarks section for an overview and highlight of all its significance and key takeaways.
+
+These concise reading instructions offer a quick introduction to each section, making for easier understanding of key points and findings regarding sorting algorithms comparison solutions.
 
 \section{ Analysis of Algorithm}
 
@@ -206,33 +210,15 @@ A stable sorting algorithm preserves the relative order of elements with equal v
 For instance, a sorting algorithm is stable means whenever there are two elements
 a[0] and a[1] with the same value and with a[0] show up before a[1] in the unsorted
 list, a[0] will also show up before a[1] in the sorted list.\cite{karunanithi2014survey}
-\newpage
+
+
+
 \section{Sorting Algorithms}
 
 \subsection{Bubble Sort Algorithm}
 
 Bubble Sort is a fundamental algorithm taught in computer science courses that serve as a building block for other sorting algorithms. It is an intuitive comparison-based algorithm that iteratively moves through an array, swapping adjacent elements if they are out of order and "bubbling up to the top" similar to how liquid surface bubbles rise to the surface. Bubble Sort derives its name from how smaller elements tend to rise toward the surface - similar to how bubbles rise with rising liquid surfaces.
 
-\subsubsection{Pseudocode}
-
-The pseudocode for the Bubble Sort algorithm is as follows:
-
-\begin{algorithm}[H]
-\caption{Bubble Sort}
-\begin{algorithmic}[1]
-\REQUIRE Records $R_1, \ldots, R_N$ are rearranged in place; after sorting is not known to be in their final position; thus we are indicating that nothing is known at this point.
-\STATE \textbf{Initialize} BOUND $\gets N$. (BOUND is the highest index for which the record is not known to be in its final position; thus we are indicating that nothing is known at this point.)
-\FOR{$j = 1$ to BOUND-1}
-    \STATE Set $t \gets 0$.
-    \STATE \textbf{Compare/exchange} $R_j: R_{j+1}$. If $K_j > K_{j+1}$, interchange $R_j \leftrightarrow R_{j+1}$ and set $t \gets j$.
-    \IF{$t = 0$}
-        \RETURN Terminate the algorithm.
-    \ELSE
-        \STATE Set BOUND $\gets t$.
-    \ENDIF
-\ENDFOR
-\end{algorithmic}
-\end{algorithm}\cite{karunanithi2014survey}
 
 \subsubsection{Explanation}
 
@@ -241,50 +227,6 @@ The Bubble Sort algorithm begins by comparing two elements in an array. If one e
 Once complete, the largest element will appear at the end of an array. Subsequent passes reduce the number of elements needing sorting by one since its appropriate place has already been achieved by this first pass; and so forth until no swappings are required any longer and thus an array is fully organized.
 
 Bubble Sort has an ordered complexity of O(n2) for worst and average case scenarios; when using already sorted arrays it becomes O(n).
-
-\subsubsection{Experimental}
-
-Random Array
-
-\begin{itemize}
-  \item Size of the array: 1,000,000
-  \item Minimum value for the integers: -1,000,000
-  \item Maximum value for the integers: 1,000,000
-\end{itemize}
-
-The time needed for the sorting: 470.4810690879822 seconds \\
-The memory used for the sorting: 25.8125 MB
-
-\begin{itemize}
-  \item Size of the array: 1,000,000
-  \item Minimum value for the integers: 0
-  \item Maximum value for the integers: 1
-\end{itemize}
-
-The time needed for the sorting: 28309.276008844376 seconds \\
-The memory used for the sorting: 17.09375 MB
-
-\begin{itemize}
-  \item Size of the array: 100,000
-  \item Minimum value for the integers: 0
-  \item Maximum value for the integers: 1
-\end{itemize}
-
-The time needed for the sorting: 189.9084632396698 seconds \\
-The memory used for the sorting: 11.546875 MB
-
-\vspace{0.5cm}
-
-Linear Array
-
-\begin{itemize}
-  \item Size of the array: 1,000,000
-  \item Minimum value for the integers: -1,000,000
-  \item Maximum value for the integers: 1,000,000
-\end{itemize}
-
-The time needed for the sorting: 100.55922985076904 seconds \\
-The memory used for the sorting: 19.546875 MB
 
 \subsection{Insertion Sort Algorithm}
 
@@ -299,23 +241,6 @@ input data when compared to other algorithms. However, in general, insertion sor
 is frequently used as a part of more sophisticated algorithms. The algorithm that
 explains insertion sort is as follows.\cite{karunanithi2014survey}
 
-\subsubsection{Pseudocode}
-
-\begin{algorithm}[H]
-\caption{Insertion Sort}
-\begin{algorithmic}[1]
-\REQUIRE Array $arr$ of size $n$ containing elements to be sorted.
-\FOR{$i = 1$ to $n-1$}
-    \STATE $key \gets arr[i]$.
-    \STATE $j \gets i-1$.
-    \WHILE{$j \geq 0$ and $arr[j] > key$}
-        \STATE $arr[j+1] \gets arr[j]$.
-        \STATE $j \gets j-1$.
-    \ENDWHILE
-    \STATE $arr[j+1] \gets key$.
-\ENDFOR
-\end{algorithmic}
-\end{algorithm}
 
 \subsubsection{Explanation}
 
@@ -331,86 +256,10 @@ This process repeats for each element in an unsorted subarray until all elements
 
 \restoregeometry
 
-\subsubsection{Experimental}
-
-
-\textbf{Random array}
-
-\begin{itemize}
-    \item The size of the array: 1,000,000
-    \item The minimum value for the integers: -1,000,000
-    \item The maximum value for the integers: 1,000,000
-\end{itemize}
-
-The time needed for the Sorting: 186.382187 seconds\\
-The memory used for the sorting: 25.375 MB
-
-\textbf{Random array}
-
-\begin{itemize}
-    \item The size of the array: 1,000,000
-    \item The minimum value for the integers: 0
-    \item The maximum value for the integers: 1
-\end{itemize}
-
-The time needed for the Sorting: 7982.022911 seconds\\
-The memory used for the sorting: 20.203125 MB
-
-\textbf{Linear Array}
-
-\begin{itemize}
-    \item The size of the array: 100,000
-    \item The minimum value for the integers: 0
-    \item The maximum value for the integers: 1
-\end{itemize}
-
-The time needed for the Sorting: 46.219333 seconds\\
-The memory used for the sorting: 16.609375 MB
-
-\textbf{Linear Array}
-
-\begin{itemize}
-    \item The size of the array: 1,000,000
-    \item The minimum value for the integers: -1,000,000
-    \item The maximum value for the integers: 1,000,000
-\end{itemize}
-
-The time needed for the Sorting: 0.004523 seconds\\
-The memory used for the sorting: 147456 bytes
-
-\restoregeometry
-
 \subsection{Quick-Sort Algorithm}
 
 Quick Sort is a well-known sorting algorithm renowned for its efficiency and simplicity, using a divide-and-conquer approach that divides an input array into smaller subarrays that are then sorted recursively before being combined together into the final sorted array.
 
-\subsubsection{Pseudocode}
-
-\begin{algorithm}[H]
-\caption{Quick Sort}
-\begin{algorithmic}[1]
-\Function{QuickSort}{$array$}
-    \If{\textbf{length of} $array \leq 1$}
-        \State \textbf{return} $array$
-    \Else
-        \State \textbf{select} a pivot element from $array$ \Comment{Usually the first or last element}
-        \State $left \gets$ empty array
-        \State $right \gets$ empty array
-        \For{\textbf{each} $element$ \textbf{in} $array$ (excluding the pivot)}
-            \If{$element < $ pivot}
-                \State \textbf{append} $element$ to $left$ array
-            \Else
-                \State \textbf{append} $element$ to $right$ array
-            \EndIf
-        \EndFor
-        \State $left \gets$ \Call{QuickSort}{$left$}
-        \State \textbf{append} pivot to $left$
-        \State $right \gets$ \Call{QuickSort}{$right$}
-        \State \textbf{return} concatenated array $left$, pivot, and array $right$
-    \EndIf
-\EndFunction
-\end{algorithmic}
-\end{algorithm}
 
 
 \subsubsection{Explanation}
@@ -420,53 +269,6 @@ Quick Sort works by first selecting a pivot element from an input array as a ref
 Quick Sort's efficiency lies in its ability to divide data efficiently into subarrays, significantly decreasing comparison requirements compared with traditional sorting algorithms. On average, Quick Sort typically requires O(n log n) time complexity making it suitable for large datasets.
 
 \textbf{Note:} Selecting an effective pivot can dramatically impact an algorithm's performance. While the pseudocode here selects either the first or last element as its pivot, other techniques exist such as randomly selecting elements or using median-of-three to improve it in certain instances.
-
-\subsubsection{Experimental}
-
-\textbf{Random Arrays}
-
-\begin{itemize}
-    \item \textbf{Size of the array:} 1,000,000
-    \item \textbf{Minimum value for the integers:} -1,000,000
-    \item \textbf{Maximum value for the integers:} 1,000,000
-\end{itemize}
-
-The time needed for the Sorting: 186.382187 seconds \\
-The memory used for the sorting: 25.375 MB
-
-
-\begin{itemize}
-    \item \textbf{Size of the array:} 1,000,000
-    \item \textbf{Minimum value for the integers:} 0
-    \item \textbf{Maximum value for the integers:} 1
-\end{itemize}
-
-The time needed for the Sorting: 7982.022911 seconds \\
-The memory used for the sorting: 20.203125 MB
-
-\textbf{Linear Array}
-
-\begin{itemize}
-    \item \textbf{Size of the array:} 100,000
-    \item \textbf{Minimum value for the integers:} 0
-    \item \textbf{Maximum value for the integers:} 1
-\end{itemize}
-
-The time needed for the Sorting: 46.219333 seconds \\
-The memory used for the sorting: 16.609375 MB
-
-\textbf{Linear Array}
-
-\begin{itemize}
-    \item \textbf{Size of the array:} 1,000,000
-    \item \textbf{Minimum value for the integers:} -1,000,000
-    \item \textbf{Maximum value for the integers:} 1,000,000
-\end{itemize}
-
-The time needed for the Sorting: 0.004523 seconds \\
-The memory used for the sorting: 147,456 bytes
-
-
 
 \subsection{Selection Sort Algorithm}
 
@@ -479,24 +281,6 @@ an in-place algorithm since it requires a constant amount of memory space. Like
 some other simple sorting methods, selection sort is also inefficient for large arrays.
 The algorithm for selection sort is as follows.\cite{karunanithi2014survey}
 
-\subsubsection{Pseudocode}
-
-
-\begin{algorithm}
-\caption{Bubble Sort}
-\begin{algorithmic}[1]
-\Procedure{BubbleSort}{array}
-    \State $n \gets$ length of $array$
-    \For{$i \gets 0$ to $n-1$}
-        \For{$j \gets 0$ to $n-1-i$}
-            \If{$array[j] > array[j+1]$}
-                \State Swap $array[j]$ and $array[j+1]$
-            \EndIf
-        \EndFor
-    \EndFor
-\EndProcedure
-\end{algorithmic}
-\end{algorithm}
 
 \subsubsection{Explanation}
 
@@ -517,52 +301,6 @@ The algorithm can be summarized in the following steps:
 
 The selection sort algorithm has a time complexity of $O(n^2)$, where $n$ is the number of elements in the array. It is an in-place sorting algorithm, meaning it operates directly on the input array without requiring additional space. However, the selection sort is not suitable for large arrays or datasets due to its quadratic time complexity.
 
-\subsubsection{Experimental}
-
-\textbf{Random Arrays}
-
-\begin{itemize}
-    \item Size of the array: 1,000,000
-    \item Minimum value for the integers: -1,000,000
-    \item Maximum value for the integers: 1,000,000
-\end{itemize}
-
-The time needed for the Sorting: 192.83785796165466 seconds\\
-The memory used for the sorting: 98.304 MB
-
-
-\begin{itemize}
-    \item Size of the array: 100,000
-    \item Minimum value for the integers: -100,000
-    \item Maximum value for the integers: 100,000
-\end{itemize}
-
-The time needed for the Sorting: 93.08789110183716 seconds\\
-The memory used for the sorting: 0.381 MB
-
-
-\begin{itemize}
-    \item Size of the array: 100,000
-    \item Minimum value for the integers: 0
-    \item Maximum value for the integers: 1
-\end{itemize}
-
-The time needed for the Sorting: 91.52299308776855 seconds\\
-The memory used for the sorting: 0.381 MB
-
-\textbf{Linear Array}
-
-\begin{itemize}
-    \item Size of the array: 1,000,000
-    \item Minimum value for the integers: -1,000,000
-    \item Maximum value for the integers: 1,000,000
-\end{itemize}
-
-The time needed for the Sorting: 71.09923887252808 seconds\\
-The memory used for the sorting: 93.156 MB
-
-
-
 \subsection{Merge Sorting Algorithm}
 
 Merge sort uses the divide and conquer approach to solve a given problem. It
@@ -575,47 +313,8 @@ however, most consider only recursive approaches for the reason that non-recursi
 is not efficient. Merge sort is a stable sort meaning that it preserves the relative
 order of elements with equal keys. The algorithm for merge sort is as follows.\cite{elkahlout2017comparative}
 
-\subsubsection{Pseudocode}
 
-\begin{algorithm}[H]
-\caption{Merge Sort}
-\begin{algorithmic}[1]
-\Function{MergeSort}{$A, p, r$}
-    \If{$p < r$}
-        \State $q \gets \lfloor(p + r) / 2\rfloor$
-        \State \Call{MergeSort}{$A, p, q$}
-        \State \Call{MergeSort}{$A, q + 1, r$}
-        \State \Call{Merge}{$A, p, q, r$}
-    \EndIf
-\EndFunction
 
-\Function{Merge}{$A, p, q, r$}
-    \State $n_1 \gets q - p + 1$
-    \State $n_2 \gets r - q$
-    \State Let $L[1..n_1 + 1]$ and $R[1..n_2 + 1]$ be new arrays
-    \For{$i \gets 1$ to $n_1$}
-        \State $L[i] \gets A[p + i - 1]$
-    \EndFor
-    \For{$j \gets 1$ to $n_2$}
-        \State $R[j] \gets A[q + j]$
-    \EndFor
-    \State $L[n_1 + 1] \gets \infty$
-    \State $R[n_2 + 1] \gets \infty$
-    \State $i \gets 1$
-    \State $j \gets 1$
-    \For{$k \gets p$ to $r$}
-        \If{$L[i] \leq R[j]$}
-            \State $A[k] \gets L[i]$
-            \State $i \gets i + 1$
-        \Else
-            \State $A[k] \gets R[j]$
-            \State $j \gets j + 1$
-        \EndIf
-    \EndFor
-\EndFunction
-\end{algorithmic}
-\end{algorithm}
-\newpage
 \subsubsection{Explanation}
 
 
@@ -631,52 +330,6 @@ The merge sort algorithm has a time complexity of $\mathcal{O}(n\log n)$, where 
 
 
 
-
-\subsubsection{Experimental}
-
-
-\textbf{Random Arrays}
-
-\begin{itemize}
-    \item Size of the array: 1,000,000
-    \item Minimum value for the integers: -1,000,000
-    \item Maximum value for the integers: 1,000,000
-\end{itemize}
-
-Time taken for sorting: 1.812251 seconds\\
-Memory used for sorting: 2.458888 MB
-
-
-
-\begin{itemize}
-    \item Size of the array: 100,000
-    \item Minimum value for the integers: -100,000
-    \item Maximum value for the integers: 100,000
-\end{itemize}
-
-Time taken for sorting: 1.1313140000000002 seconds\\
-Memory used for sorting: 1.728328 MB
-
-
-\begin{itemize}
-    \item Size of the array: 100,000
-    \item Minimum value for the integers: 0
-    \item Maximum value for the integers: 1
-\end{itemize}
-
-Time taken for sorting: 0.900424 seconds\\
-Memory used for sorting: 1.801216 MB
-\newpage
-\textbf{Linear Array}
-
-\begin{itemize}
-    \item Size of the array: 1,000,000
-    \item Minimum value for the integers: -1,000,000
-    \item Maximum value for the integers: 1,000,000
-\end{itemize}
-
-Time taken for sorting: 0.57005 seconds\\
-Memory used for sorting: 1.614808 MB
 
 
 
@@ -696,46 +349,6 @@ and so on. The algorithm repeats this operation until the array is sorted. Heap
 sort does not preserve the relative order of elements with equal keys; hence it is not
 a stable sort. The algorithm for Heap sort is as follows.\cite{karunanithi2014survey}
 
-\subsubsection{Pesudocode}
-
-
-\begin{algorithm}
-\caption{Heap Sort}
-\begin{algorithmic}[1]
-\Procedure{Heapify}{$arr, n, i$}
-    \State $largest \gets i$
-    \State $left \gets 2 \cdot i + 1$
-    \State $right \gets 2 \cdot i + 2$
-    
-    \If{$left < n$ \textbf{and} $arr[i] < arr[left]$}
-        \State $largest \gets left$
-    \EndIf
-    
-    \If{$right < n$ \textbf{and} $arr[largest] < arr[right]$}
-        \State $largest \gets right$
-    \EndIf
-    
-    \If{$largest \neq i$}
-        \State Swap $arr[i]$ and $arr[largest]$
-        \State \Call{Heapify}{$arr, n, largest$}
-    \EndIf
-\EndProcedure
-
-\Procedure{HeapSort}{$arr$}
-    \State $n \gets$ length of $arr$
-    
-    \For{$i \gets n//2 - 1$ \textbf{downto} $0$}
-        \State \Call{Heapify}{$arr, n, i$}
-    \EndFor
-    
-    \For{$i \gets n-1$ \textbf{downto} $1$}
-        \State Swap $arr[0]$ and $arr[i]$
-        \State \Call{Heapify}{$arr, i, 0$}
-    \EndFor
-\EndProcedure
-
-\end{algorithmic}
-\end{algorithm}
 
 \subsubsection{Explanation}
 
@@ -749,141 +362,213 @@ Heap Sort leverages the properties of binary heap data structures to efficiently
 Overall, Heap Sort's time complexity is $O(n log n)$; where $n$ represents the number of elements in an array. As it uses comparison-based sorting rather than direct sorting methods to sort array elements efficiently with constant space usage requirements.
 The Heap Sort algorithm begins by creating a max heap from its input array, by calling the textscHeapify procedure on each non-leaf node of the heap in reverse order and performing comparisons against left and right children of element $i$ to keep max heap property intact - guaranteeing that its largest element always sits at its root of heap construction.
 
-Once we've constructed our max heap, the largest element (at the root) will be swapped out with its opposite and removed from consideration - this ensures it resides correctly within its respective array and then reduces by one. Finally we reduce its size.
+Once we've constructed our max heap, the largest element (at the root) will be swapped out with its opposite and removed from consideration - this ensures it resides correctly within its respective array and then reduces by one. Finally, we reduce its size.
 
 To restore the maximum heap property, we employ the textscHeapify procedure on the new root element, repeating this step for all remaining elements (from $n-1$ down to $1$). Each iteration involves swapping out one root element with each of its counterparts before calling textscHeapify to keep up the maximum heap property.
 
 After the second loop is complete, the array will be sorted in ascending order as a result of repeatedly extracting maximum elements from the heap and placing them at the end of the array.
 
 Heap Sort is an efficient sorting algorithm with an O(n log n) worst-case time complexity, being in-place and only needing constant additional space to complete. Cache performance is excellent due to local memory access patterns allowing access quickly when necessary; however, it might not be suitable for sorting small arrays with mostly-sorted elements as its overhead for building its heap may be relatively higher when compared with other algorithms.
-\subsubsection{Experimental}
 
-Random Arrays
+\subsection{Counting Sort Algorithm}
+Counting sort is a simple, stable, and efficient sorting
+algorithm with linear running time, which is a fundamental
+building block for many applications. The counting sort algorithm
+has been widely used in data processing systems, because of
+its high efficiency, fast speed, and stable nature. Therefore, a
+thorough study of its time complexity is required. This paper
+presents a modified version of counting sort E-Counting Sort
+with some efficiency improvements. An analysis of the ECounting sort algorithm in comparison with the original counting
+sort algorithm clearly shows that the E-Counting sort algorithm
+has a reduced time complexity of approximately half of the
+original one. The new version can be applied to many real-world applications providing the required result as efficiently
+and as effectively as the original counting sort without affecting its
+real nature and improving the efficiency of the application program.\cite{bajpai2014implementing}
+\subsubsection{Explanation}
 
-\begin{itemize}
-  \item Size of the array: 1,000,000
-  \item Minimum value for the integers: -1,000,000
-  \item Maximum value for the integers: 1,000,000
-\end{itemize}
+When the range of input values is minimal, counting sort is an efficient algorithm for sorting. It operates by counting the occurrences of each individual element and then using that data to generate the sorted output. 
 
-\textbf{Sorting Performance:}
+The algorithm starts by identifying the value range in the input list. It generates a counting array of the range's length and counts the occurrences of each element. The counting array is then modified to store cumulative counts.
 
-\begin{itemize}
-  \item Time needed for sorting: 2.645048141479492 seconds
-  \item Memory used for sorting: 7.16 MB
-\end{itemize}
+By iterating through the input list, the method generates the sorted output list using the cumulative counts. It locates the corresponding value in the cumulative count array and positions the element in the output list.
 
-Array Details
+The temporal complexity of counting sort is O(n + k), where n is the number of elements and k is the range of values. Because it is not a comparison-based technique, it is only appropriate for non-negative integers or elements with defined keys.
 
-\begin{itemize}
-  \item Size of the array: 100,000
-  \item Minimum value for the integers: -100,000
-  \item Maximum value for the integers: 100,000
-\end{itemize}
+Overall, counting sort is a basic and efficient sorting algorithm that works well when sorting a large number of objects within a narrow value range.
 
-\textbf{Sorting Performance:}
-
-\begin{itemize}
-  \item Time needed for sorting: 0.19623780250549316 seconds
-  \item Memory used for sorting: 0.14 MB
-\end{itemize}
-
-\subsection*{Array Details}
-
-\begin{itemize}
-  \item Size of the array: 100,000
-  \item Minimum value for the integers: 0
-  \item Maximum value for the integers: 1
-\end{itemize}
-
-\textbf{Sorting Performance:}
-
-\begin{itemize}
-  \item Time needed for sorting: 0.09730386734008789 seconds
-  \item Memory used for sorting: 0.14 MB
-\end{itemize}
-
-\newpage
 \section{Conclusion }
-
-
-
-\begin{tikzpicture}
-\begin{axis}[
-    ybar,
-    bar width=10pt,
-    xlabel={Algorithm},
-    ylabel={Time (s)},
-    xtick=data,
-    xticklabels={
-        Insertion Sort,
-        Bubble Sort,
-        Quick Sort,
-        Selection Sort,
-        Merge Sort,
-        Heap Sort,
-        Counting Sort
-    },
-    xticklabel style={rotate=45, anchor=east},
-    legend style={at={(0.5,-0.2)}, anchor=north,legend columns=-1},
-    enlarge x limits=0.2,
-    width=\textwidth,
-    height=8cm,
-    ymin=0,
-]
-\addplot coordinates {
-    (1, 186.382187)
-    (2, 470.4810690879822)
-    (3, 0.12302684783935547)
-    (4, 192.83785796165466)
-    (5, 1.812251)
-    (6, 2.645048141479492)
-    (7, NaN)
-};
-\legend{Time (s)}
-\end{axis}
-\end{tikzpicture}
-
-\begin{tikzpicture}
-\begin{axis}[
-    ybar,
-    bar width=10pt,
-    xlabel={Algorithm},
-    ylabel={Memory Usage (MB)},
-    xtick=data,
-    xticklabels={
-        Insertion Sort,
-        Bubble Sort,
-        Quick Sort,
-        Selection Sort,
-        Merge Sort,
-        Heap Sort,
-        Counting Sort
-    },
-    xticklabel style={rotate=45, anchor=east},
-    legend style={at={(0.5,-0.2)}, anchor=north,legend columns=-1},
-    enlarge x limits=0.2,
-    width=\textwidth,
-    height=8cm,
-    ymin=0,
-]
-\addplot coordinates {
-    (1, 25.375)
-    (2, 25.8125)
-    (3, 26.09375)
-    (4, 98.304)
-    (5, 2.458888)
-    (6, 7.16)
-    (7, NaN)
-};
-\legend{Memory Usage (MB)}
-\end{axis}
-\end{tikzpicture}
-
-
 On the basis of our analysis and the charts created using these data sets, we can reach some interesting conclusions:
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={Size of Array},
+            ylabel={Time (s)},
+            xmin=0, xmax=55000,
+            ymin=0, ymax=90,
+            xtick={10000, 20000, 30000, 40000, 50000},
+            ytick={0, 10, 20, 30, 40, 50, 60, 70, 80, 90},
+            ymajorgrids=true,
+            grid style=dashed,
+            legend pos=outer north east,
+        ]
+        
+        \addplot[
+            color=red,
+            mark=square,
+            ]
+            coordinates {
+            (10000,0.014313220977783203)(50000,37.8)
+            };
+            \addlegendentry{Quicksort}
+            
+        \addplot[
+            color=blue,
+            mark=square,
+            ]
+            coordinates {
+            (10000,2.264711856842041)(50000,39.8)
+            };
+            \addlegendentry{Bubble Sort}
+            
+        \addplot[
+            color=green,
+            mark=square,
+            ]
+            coordinates {
+            (10000,0.9374568462371826)(50000,61.8)
+            };
+            \addlegendentry{Selection Sort}
+            
+        \addplot[
+            color=orange,
+            mark=square,
+            ]
+            coordinates {
+            (10000,0.097107)(50000,1.131314)
+            };
+            \addlegendentry{Merge Sort}
+            
+        \addplot[
+            color=purple,
+            mark=square,
+            ]
+            coordinates {
+            (10000,0.029572010040283203)(50000,0.19623780250549316)
+            };
+            \addlegendentry{Heap Sort}
+        
+        \addplot[
+            color=brown,
+            mark=square,
+            ]
+            coordinates {
+            (10000,0.0414)(50000,0.3653)
+            };
+            \addlegendentry{Counting Sort}
+            
+        \addplot[
+            color=teal,
+            mark=square,
+            ]
+            coordinates {
+            (10000,0.917801)(50000,89.918657)
+            };
+            \addlegendentry{Insertion Sort}
+        
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Time taken by various sorting algorithms.}
+    \label{fig:sort-algorithms-time}
+\end{figure}
+
+
 
 \textbf{Time Complexity:} Out of all of the sorting algorithms tested, Quick Sort was found to perform best when measured against other algorithms in terms of execution time required to sort arrays containing 1 million elements. Insertion Sort and Selection Sort showed comparable performance while Bubble Sort's execution times were considerably slower; Merge Sort and Heap Sort both also performed adequately but their performance could be slightly delayed when compared with Quick Sort's results.
+
+\begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            xlabel={Size of Array},
+            ylabel={Memory Usage (MB)},
+            xmin=0, xmax=55000,
+            ymin=0, ymax=90,
+            xtick={10000, 20000, 30000, 40000, 50000},
+            ytick={0, 10, 20, 30, 40, 50, 60, 70, 80, 90},
+            ymajorgrids=true,
+            grid style=dashed,
+            legend pos=outer north east,
+        ]
+        
+        \addplot[
+            color=red,
+            mark=square,
+            ]
+            coordinates {
+                        (10000,11.046875)(50000,1840.78125)
+            };
+            \addlegendentry{Quicksort}
+            
+        \addplot[
+            color=blue,
+            mark=square,
+            ]
+            coordinates {
+            (10000,11.21875)(50000,11.546875)
+            };
+            \addlegendentry{Bubble Sort}
+            
+        \addplot[
+            color=green,
+            mark=square,
+            ]
+            coordinates {
+            (10000,11.156875)(50000,0.381)
+            };
+            \addlegendentry{Selection Sort}
+            
+        \addplot[
+            color=orange,
+            mark=square,
+            ]
+            coordinates {
+            (10000,0.170072)(50000,1.728328)
+            };
+            \addlegendentry{Merge Sort}
+            
+        \addplot[
+            color=purple,
+            mark=square,
+            ]
+            coordinates {
+            (10000,0.06)(50000,0.14)
+            };
+            \addlegendentry{Heap Sort}
+        
+        \addplot[
+            color=brown,
+            mark=square,
+            ]
+            coordinates {
+            (10000,0.0762939453125)(50000,0.762939453125)
+            };
+            \addlegendentry{Counting Sort}
+            
+        \addplot[
+            color=teal,
+            mark=square,
+            ]
+            coordinates {
+            (10000,15.4375)(50000,26.921875)
+            };
+            \addlegendentry{Insertion Sort}
+        
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Memory usage of various sorting algorithms.}
+    \label{fig:sort-algorithms-memory}
+\end{figure}
 
 \textbf{Memory Usage:} Of all of the algorithms considered here, Counting Sort had the lowest memory footprint; consistently using less space than any of its rivals. Meanwhile, Merge Sort and Quick Sort used moderate amounts, while Bubble and Heap Sort consumed considerably more memory; in comparison, Insertion Sort and Selection Sort had reasonable consumption levels.
 
@@ -894,21 +579,51 @@ On the basis of our analysis and the charts created using these data sets, we ca
 \textbf{Conclusion:} In general, selecting an optimal sorting algorithm depends upon your application's individual requirements for time complexity, memory usage, and input range. It's crucial that these factors be carefully taken into account in order to select an algorithm suitable for your situation.
 
 
-\textbf{Code Source}
-Here You can have access to the code : https://github.com/MihyarH/MPI-Sorting-Algorithms.git
 
 
 
 
 
+\begin{table}[h]
+    \centering
+    \caption{Sorting Algorithms Performance}
+    \label{tab:sorting-performance}
+    \begin{tabular}{cccc}
+        \toprule
+        \textbf{Sorting Algorithm} & \textbf{Array Size} & \textbf{Time (Seconds)} & \textbf{Memory Usage (MB)} \\
+        \midrule
+        \multirow{3}{*}{Quicksort} & 10,000 & 0.014 & 11.046875 \\
+        & 50,000 & 0.123 & 1,840.78125 \\
+        & 100,000 & 0.288 & 26.09375 \\
+        \midrule
+        \multirow{3}{*}{Bubble Sort} & 10,000 & 2.265 & 11.21875 \\
+        & 50,000 & 189.908 & 11.546875 \\
+        & 100,000 & 470.481 & 25.8125 \\
+        \midrule
+        \multirow{3}{*}{Selection Sort} & 10,000 & 0.937 & 11.156875 \\
+        & 50,000 & 93.088 & 0.381 \\
+        & 100,000 & 192.838 & 98.304 \\
+        \midrule
+        \multirow{3}{*}{Merge Sort} & 10,000 & 0.097 & 0.170072 \\
+        & 50,000 & 1.131 & 1.728328 \\
+        & 100,000 & 1.812 & 2.458888 \\
+        \midrule
+        \multirow{3}{*}{Heap Sort} & 10,000 & 0.030 & 0.060 \\
+        & 50,000 & 0.196 & 0.140 \\
+        & 100,000 & 2.645 & 7.160 \\
+        \midrule
+        \multirow{3}{*}{Counting Sort} & 10,000 & 0.041 & 0.0762939453125 \\
+        & 50,000 & 0.365 & 0.762939453125 \\
+        & 100,000 & 1.352 & 1.0825729370117188 \\
+        \midrule
+        \multirow{3}{*}{Insertion Sort} & 10,000 & 0.918 & 15.4375 \\
+        & 50,000 & 89.919 & 26.921875 \\
+        & 100,000 & 181.444 & 31.078125 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
-
-
-
-
-
-\bibliographystyle{plain}
+\newpage
+\bibliographystyle{apalike}
 \bibliography{References}
-
-
 \end{document}
